@@ -1,0 +1,25 @@
+.product-type {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 45px;
+}
+
+.product-type--active {
+  border-bottom: 5px solid aquamarine;
+}
+
+.product-type__shirts,
+.product-type__shoes {
+  cursor: pointer;
+}
+
+.product-type__shirts:focus,
+.product-type__shoes:focus {
+  outline: none;
+}
+
+.product-type__shirts {
+  margin-right: 30px;
+}

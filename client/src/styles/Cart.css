@@ -1,0 +1,22 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background-color: black;
+  width: auto;
+  height: 100vh;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  transform: translateX(101%);
+  transition: transform 300ms ease;
+}
+
+.navigation__cart-container.open .cart {
+  transform: translateX(0);
+  transition: transform 300ms ease;
+}
+
+.cart span {
+  color: white;
+}

@@ -1,0 +1,31 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  padding: 60px 0 25px;
+  align-items: center;
+}
+
+.footer__info {
+  display: flex;
+  margin: 25px 0 10px;
+}
+
+.footer__divider {
+  margin: 0 5px;
+}
+
+.footer__github-link {
+  text-decoration: none;
+  color: black;
+}
+
+.footer__made-with-love {
+  color: red;
+}
+
+.footer__made-with-love,
+.footer__github-icon {
+  margin-left: 2px;
+}

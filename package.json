@@ -1,0 +1,24 @@
+{
+  "name": "simple-shopping",
+  "version": "1.0.0",
+  "description": "A simple shopping cart built with React",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "simple shopping",
+    "shopping cart",
+    "react shopping cart",
+    "matthew october"
+  ],
+  "author": "Matthew October",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
