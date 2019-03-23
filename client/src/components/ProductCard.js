@@ -2,6 +2,7 @@ import React from "react";
 import Img from "react-image";
 import PropTypes from "prop-types";
 import Spinner from "./Spinner";
+// import makeAccessiblePseudoButton from "../utils";
 
 const ProductCard = props => {
   const { url, productName, price, alt } = props;
@@ -10,6 +11,12 @@ const ProductCard = props => {
       <Img src={url} alt={alt} loader={<Spinner />} />
       <h3>{productName}</h3>
       <h4>{price}</h4>
+      <div
+        className="product-card__add-to-cart"
+        // {...makeAccessiblePseudoButton}
+      >
+        <span>Add to cart</span>
+      </div>
     </article>
   );
 };

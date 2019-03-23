@@ -5,7 +5,7 @@ import "../styles/Footer.css";
 const Footer = () => (
   <div className="footer">
     <span className="footer__slogan">
-      Simple e-commerce for the simple shopper
+      Simple e-commerce for the simple shopper.
     </span>
     <div className="footer__info">
       <a

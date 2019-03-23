@@ -9,9 +9,21 @@
 
 .navigation h1 {
   margin: 0 0;
-  padding: 0 0;
+  padding: 5px 10px;
   text-align: center;
   flex: 1;
+  transform: skew(-8deg);
+  font-size: 28px;
+}
+
+.navigation h1 a {
+  background-color: black;
+  color: white;
+  padding: 10px;
+}
+
+.navigation h1 a:hover {
+  color: white;
 }
 
 .navigation__icon {

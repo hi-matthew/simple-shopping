@@ -3,16 +3,22 @@
   height: auto;
   display: flex;
   justify-content: center;
-  margin-bottom: 45px;
+  margin-bottom: 20px;
 }
 
 .product-type--active {
-  border-bottom: 5px solid aquamarine;
+  background-color: black;
+  color: white;
 }
 
 .product-type__shirts,
 .product-type__shoes {
   cursor: pointer;
+  font-weight: 700;
+  font-size: 17px;
+  padding: 5px;
+  transform: skew(-5deg);
+  transition: color 400ms ease, background-color 400ms ease;
 }
 
 .product-type__shirts:focus,
