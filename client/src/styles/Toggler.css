@@ -16,6 +16,12 @@
   transition: color 400ms ease, background-color 400ms ease;
 }
 
+.product-type__shirts--active,
+.product-type__shoes--active {
+  background-color: black;
+  color: white;
+}
+
 .product-type__shirts:focus,
 .product-type__shoes:focus {
   outline: none;

@@ -13,20 +13,28 @@ const Toggler = props => {
     color: "white"
   };
 
+  const shirtProductClass =
+    productToggle === "shirts"
+      ? "product-type__shirts product-type__shirts--active"
+      : "product-type__shirts";
+
+  const shoeProductClass =
+    productToggle === "shoes"
+      ? "product-type__shoes product-type__shoes--active"
+      : "product-type__shoes";
+
   return (
     <div className="product-type">
       <span
-        className="product-type__shirts"
+        className={shirtProductClass}
         onClick={toggleProducts}
-        style={productToggle === "shirts" ? activeToggle : null}
         {...makeAccessiblePsuedoButton(toggleProducts)}
       >
         Shirts
       </span>
       <span
-        className="product-type__shoes"
+        className={shoeProductClass}
         onClick={toggleProducts}
-        style={productToggle === "shoes" ? activeToggle : null}
         {...makeAccessiblePsuedoButton(toggleProducts)}
       >
         Shoes
