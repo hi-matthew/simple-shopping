@@ -27,9 +27,13 @@
   margin-left: 0;
 }
 
-.product-bin__product-card img {
+.product-bin__img-container {
+  position: relative;
+}
+
+.product-bin__product-card .product-bin__img-container img {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .product-bin__product-card h3,
@@ -53,11 +57,55 @@
   transition: background-color 450ms ease, border 450ms ease, width 450ms ease;
 }
 
-.product-bin__product-card:hover .product-card__details-button {
+.product-bin__product-card:hover .product-card__details-button,
+.product-bin__product-card:focus .product-card__details-button {
   background-color: white;
   color: black;
   border: 2px solid black;
   transition: background-color 450ms ease, border 450ms ease, width 450ms ease;
+}
+
+.product-bin__product-overlay {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-bin__product-overlay span {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  opacity: 0;
+  transform: translateX(-40px) skew(-8deg);
+  transition: opacity 300ms ease, transform 300ms ease;
+  padding: 5px 15px;
+  font-size: 12px;
+  width: auto;
+}
+
+.product-bin__product-card:hover .product-bin__product-overlay,
+.product-bin__product-card:focus .product-bin__product-overlay {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.product-bin__product-card:hover .product-bin__product-overlay span,
+.product-bin__product-card:focus .product-bin__product-overlay span {
+  transform: translateX(0) skew(-8deg);
+  opacity: 1;
+  transition: opacity 300ms ease, transform 300ms ease;
+  padding-left: 15px;
 }
 
 .product-card__details-button::after {
@@ -70,7 +118,8 @@
   transition: transform 450ms ease, opacity 450ms ease;
 }
 
-.product-bin__product-card:hover .product-card__details-button::after {
+.product-bin__product-card:hover .product-card__details-button::after,
+.product-bin__product-card:focus .product-card__details-button::after {
   opacity: 1;
   transform: translateX(0);
   transition: transform 450ms ease, opacity 450ms ease;
@@ -81,7 +130,8 @@
   transition: padding-left 450ms ease;
 }
 
-.product-bin__product-card:hover span {
+.product-bin__product-card:hover span,
+.product-bin__product-card:focus span {
   padding-left: 0;
   transition: padding-left 450ms ease;
 }

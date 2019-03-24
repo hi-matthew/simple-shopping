@@ -24,7 +24,19 @@ const ProductCard = props => {
         onClick={detailsModalActivated}
         {...makeAccessiblePseudoButton(detailsModalActivated)}
       >
-        <Img src={url} alt={alt} loader={<Spinner />} />
+        <div className="product-bin__img-container">
+          <Img
+            src={url}
+            alt={alt}
+            loader={<Spinner />}
+            className="product-bin__product-img"
+          />
+          <div className="product-bin__product-overlay">
+            <span role="img" aria-label="fire emojis">
+              Simply 🔥🔥🔥
+            </span>
+          </div>
+        </div>
         <h3>{productName}</h3>
         <h4>{price}</h4>
         <div className="product-card__details-button">
