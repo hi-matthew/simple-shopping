@@ -8,11 +8,6 @@ import "../styles/Toggler.css";
 const Toggler = props => {
   const { toggleProducts, productToggle } = props;
 
-  const activeToggle = {
-    backgroundColor: "black",
-    color: "white"
-  };
-
   const shirtProductClass =
     productToggle === "shirts"
       ? "product-type__shirts product-type__shirts--active"
