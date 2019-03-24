@@ -20,21 +20,14 @@ export const loadInventory = inventory => {
   };
 };
 
-export const toggleCartStatus = e => {
-  const { tagName } = e.target;
-  let menuContainer;
-  // pass parent element of the menu
-  if (tagName === "svg") {
-    menuContainer = e.target.parentElement;
-  } else if (tagName === "path") {
-    menuContainer = e.target.parentElement.parentElement;
-  } else {
-    menuContainer = e.target;
-  }
+export const toggleCartStatus = () => {
   return {
-    type: types.CART_STATUS,
-    payload: {
-      menuContainer
-    }
+    type: types.CART_STATUS
+  };
+};
+
+export const detailsModalActivated = e => {
+  return {
+    type: types.MODAL_IS_ACTIVATED
   };
 };

@@ -6,12 +6,19 @@ import makeAccessiblePsuedoButton from "../utils";
 import "../styles/Toggler.css";
 
 const Toggler = props => {
-  const { toggleProducts } = props;
+  const { toggleProducts, productToggle } = props;
+
+  const activeToggle = {
+    backgroundColor: "black",
+    color: "white"
+  };
+
   return (
     <div className="product-type">
       <span
-        className="product-type__shirts product-type--active"
+        className="product-type__shirts"
         onClick={toggleProducts}
+        style={productToggle === "shirts" ? activeToggle : null}
         {...makeAccessiblePsuedoButton(toggleProducts)}
       >
         Shirts
@@ -19,6 +26,7 @@ const Toggler = props => {
       <span
         className="product-type__shoes"
         onClick={toggleProducts}
+        style={productToggle === "shoes" ? activeToggle : null}
         {...makeAccessiblePsuedoButton(toggleProducts)}
       >
         Shoes
@@ -28,7 +36,8 @@ const Toggler = props => {
 };
 
 Toggler.propTypes = {
-  toggleProducts: PropTypes.func.isRequired
+  toggleProducts: PropTypes.func.isRequired,
+  productToggle: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => {

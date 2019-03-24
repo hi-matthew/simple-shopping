@@ -6,11 +6,6 @@
   margin-bottom: 20px;
 }
 
-.product-type--active {
-  background-color: black;
-  color: white;
-}
-
 .product-type__shirts,
 .product-type__shoes {
   cursor: pointer;

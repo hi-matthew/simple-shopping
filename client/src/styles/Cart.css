@@ -12,11 +12,6 @@
   transition: transform 300ms ease;
 }
 
-.navigation__cart-container.open .cart {
-  transform: translateX(0);
-  transition: transform 300ms ease;
-}
-
 .cart span {
   color: white;
 }
