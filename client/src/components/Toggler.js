@@ -18,6 +18,16 @@ const Toggler = props => {
       ? "product-type__shoes product-type__shoes--active"
       : "product-type__shoes";
 
+  const shirtProductClass =
+    productToggle === "shirts"
+      ? "product-type__shirts product-type__shirts--active"
+      : "product-type__shirts";
+
+  const shoeProductClass =
+    productToggle === "shoes"
+      ? "product-type__shoes product-type__shoes--active"
+      : "product-type__shoes";
+
   return (
     <div className="product-type">
       <span
