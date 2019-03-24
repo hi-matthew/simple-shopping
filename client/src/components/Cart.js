@@ -5,15 +5,10 @@ import "../styles/Cart.css";
 
 const Cart = props => {
   const { cartStatus } = props;
-  const activeCartStyles = {
-    transform: "translateX(0)",
-    transition: "transform 300ms ease"
-  };
+  const cartClass = cartStatus.includes("open") ? "cart cart--active" : "cart";
+
   return (
-    <div
-      className="cart"
-      style={cartStatus === "open" ? activeCartStyles : null}
-    >
+    <div className={cartClass}>
       <span>I am the cart!</span>
     </div>
   );

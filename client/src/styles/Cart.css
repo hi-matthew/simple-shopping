@@ -14,6 +14,11 @@
   padding: 0 20px;
 }
 
+.cart.cart--active {
+  transform: translateX(0);
+  transition: transform 300ms ease;
+}
+
 .cart span {
   color: white;
 }

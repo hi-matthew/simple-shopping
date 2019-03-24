@@ -9,12 +9,7 @@ import Cart from "./Cart";
 import "../styles/Navigation.css";
 
 const Navigation = props => {
-  const { cartStatus, toggleCartStatus } = props;
-  const activeCartStyles = {
-    transform: "translateX(0)",
-    transition: "transform 300ms ease"
-  };
-
+  const { toggleCartStatus } = props;
   return (
     <nav className="navigation">
       <span className="navigation__profile-container">
@@ -38,20 +33,13 @@ const Navigation = props => {
           icon="shopping-cart"
         />
       </span>
-      <Cart style={cartStatus === "open" ? activeCartStyles : null} />
+      <Cart />
     </nav>
   );
 };
 
 Navigation.propTypes = {
-  cartStatus: PropTypes.string.isRequired,
   toggleCartStatus: PropTypes.func.isRequired
-};
-
-const mapStateToProps = state => {
-  return {
-    cartStatus: state.cartStatus
-  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -61,6 +49,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Navigation);
