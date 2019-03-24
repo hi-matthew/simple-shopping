@@ -66,3 +66,25 @@
     padding: 45px 15px;
   }
 }
+
+@media only screen and (max-width: 400px) {
+  .navigation h1 {
+    font-size: 25px;
+  }
+
+  .navigation__cart-container,
+  .navigation__profile-container {
+    width: 45px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .navigation h1 {
+    font-size: 21px;
+  }
+
+  .navigation__cart-container,
+  .navigation__profile-container {
+    width: 40px;
+  }
+}

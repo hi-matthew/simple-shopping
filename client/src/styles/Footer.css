@@ -7,6 +7,11 @@
   align-items: center;
 }
 
+.footer__slogan {
+  text-align: center;
+  padding: 0 10px;
+}
+
 .footer__info {
   display: flex;
   margin: 25px 0 10px;

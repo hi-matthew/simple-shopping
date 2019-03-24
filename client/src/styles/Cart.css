@@ -10,6 +10,7 @@
   right: 0;
   transform: translateX(101%);
   transition: transform 300ms ease;
+  z-index: 5;
 }
 
 .cart span {

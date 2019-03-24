@@ -3,6 +3,7 @@ import Img from "react-image";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { detailsModalActivated } from "../redux/actionCreators";
+import ProductDetails from "./ProductDetails";
 import Spinner from "./Spinner";
 import makeAccessiblePseudoButton from "../utils";
 
@@ -16,19 +17,22 @@ const ProductCard = props => {
     modalIsActivated
   } = props;
   return (
-    <article
-      key={productName}
-      className="product-bin__product-card"
-      onClick={detailsModalActivated}
-      {...makeAccessiblePseudoButton(detailsModalActivated)}
-    >
-      <Img src={url} alt={alt} loader={<Spinner />} />
-      <h3>{productName}</h3>
-      <h4>{price}</h4>
-      <div className="product-card__details-button">
-        <span>Details</span>
-      </div>
-    </article>
+    <>
+      <article
+        key={productName}
+        className="product-bin__product-card"
+        onClick={detailsModalActivated}
+        {...makeAccessiblePseudoButton(detailsModalActivated)}
+      >
+        <Img src={url} alt={alt} loader={<Spinner />} />
+        <h3>{productName}</h3>
+        <h4>{price}</h4>
+        <div className="product-card__details-button">
+          <span>Details</span>
+        </div>
+      </article>
+      {modalIsActivated ? <ProductDetails /> : null}
+    </>
   );
 };
 
