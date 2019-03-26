@@ -10,4 +10,8 @@ const toggleCartStatus = (state = "closed", action) => {
   }
 };
 
+export const addToCart = (state = [], action) => {
+  return state;
+}
+
 export default toggleCartStatus;

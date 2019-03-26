@@ -26,8 +26,30 @@ export const toggleCartStatus = () => {
   };
 };
 
-export const detailsModalActivated = e => {
+export const toggleModal = focusProduct => {
   return {
-    type: types.MODAL_IS_ACTIVATED
+    type: types.MODAL_STATUS,
+    payload: {
+      focusProduct
+    }
+  };
+};
+
+export const updateQuantity = e => {
+  const { innerHTML: operator } = e.target;
+  return {
+    type: types.QUANTITY,
+    payload: {
+      operator
+    }
+  };
+};
+
+export const addToCart = newItem => {
+  return {
+    type: types.CART,
+    payload: {
+      newItem
+    }
   };
 };

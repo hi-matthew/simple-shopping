@@ -7,16 +7,18 @@ import "../styles/ProductBin.css";
 const ProductBin = props => {
   const { productToggle, inventory } = props;
   const renderProductBin = () => {
-    return inventory[productToggle].map(({ url, productName, price, alt }) => (
-      <ProductCard
-        key={productName}
-        className="product-bin__product-card"
-        productName={productName}
-        price={price}
-        url={url}
-        alt={alt}
-      />
-    ));
+    return inventory[productToggle].map(
+      ({ url, productName, price, alt }, i) => (
+        <ProductCard
+          key={productName}
+          className="product-bin__product-card"
+          productName={productName}
+          price={price}
+          url={url}
+          alt={alt}
+        />
+      )
+    );
   };
 
   return <div className="product-bin">{renderProductBin()}</div>;

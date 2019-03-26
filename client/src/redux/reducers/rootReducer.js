@@ -1,14 +1,16 @@
 import { combineReducers } from "redux";
 import toggleReducer from "./toggleReducer";
 import inventoryReducer from "./inventoryReducer";
-import toggleCartStatus from "./cartReducer";
-import detailsModelActivated from "./productCardReducer";
+import toggleCartStatus, { addToCart } from "./cartReducer";
+import updateModal, { updateQuantity } from "./productCardReducer";
 
 const rootReducer = combineReducers({
   productToggle: toggleReducer,
   inventory: inventoryReducer,
   cartStatus: toggleCartStatus,
-  modalIsActivated: detailsModelActivated
+  modalStatus: updateModal,
+  quantity: updateQuantity,
+  cart: addToCart
 });
 
 export default rootReducer;
