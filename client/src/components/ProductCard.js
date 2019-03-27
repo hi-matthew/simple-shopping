@@ -8,15 +8,15 @@ import makeAccessiblePseudoButton from "../utils";
 
 const ProductCard = props => {
   // eslint-disable-next-line no-shadow
-  const { url, productName, price, alt, toggleModalFunc } = props;
+  const { url, productName, price, alt, toggleModal } = props;
   return (
     <>
       {/* eslint-disable */}
       <article
         key={productName}
         className="product-bin__product-card"
-        onClick={() => toggleModalFunc(productName)}
-        {...makeAccessiblePseudoButton(toggleModalFunc)}
+        onClick={() => toggleModal(productName)}
+        {...makeAccessiblePseudoButton(() => toggleModal(productName))}
       >
       {/* eslint-enable */}
         <div className="product-bin__img-container">
@@ -47,7 +47,7 @@ ProductCard.propTypes = {
   productName: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  toggleModalFunc: PropTypes.func.isRequired
+  toggleModal: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -58,7 +58,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleModalFunc: focusProduct => dispatch(toggleModal(focusProduct))
+    toggleModal: focusProduct => dispatch(toggleModal(focusProduct))
   };
 };
 

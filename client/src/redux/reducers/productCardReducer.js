@@ -25,6 +25,9 @@ export const updateQuantity = (state = 1, action) => {
       if (state === 1 && operator === "-") return state;
       return operator === "+" ? state + 1 : state - 1;
     }
+    case MODAL_STATUS: {
+      return 1;
+    }
     default:
       return state;
   }
