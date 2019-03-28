@@ -20,7 +20,8 @@ Cart.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    cartStatus: state.cartStatus
+    cartStatus: state.cartStatus,
+    cart: state.cart
   };
 };
 

@@ -2,7 +2,7 @@ import { MODAL_STATUS, QUANTITY } from "../actionTypes";
 
 const initialState = {
   isActive: false,
-  focusProduct: null
+  focusProduct: {}
 };
 
 const updateModal = (state = initialState, action) => {

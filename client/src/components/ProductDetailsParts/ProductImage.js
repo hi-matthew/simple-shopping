@@ -2,10 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-const ProductImage = ({ inventory, productToggle, modalStatus }) => {
-  const { url, alt } = inventory[productToggle].filter(
-    obj => obj.productName === modalStatus.focusProduct
-  )[0];
+const ProductImage = ({ modalStatus }) => {
+  const { url, alt } = modalStatus.focusProduct;
   return (
     <div className="modal-body__img-container">
       <img src={`../../${url}`} alt={alt} />
@@ -14,20 +12,15 @@ const ProductImage = ({ inventory, productToggle, modalStatus }) => {
 };
 
 ProductImage.propTypes = {
-  inventory: PropTypes.objectOf(
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        productName: PropTypes.string,
-        price: PropTypes.string,
-        url: PropTypes.string,
-        alt: PropTypes.string
-      })
-    )
-  ).isRequired,
-  productToggle: PropTypes.string.isRequired,
   modalStatus: PropTypes.shape({
     active: PropTypes.bool,
-    focusProduct: PropTypes.string
+    focusProduct: PropTypes.shape({
+      productName: PropTypes.string,
+      url: PropTypes.string,
+      alt: PropTypes.string,
+      price: PropTypes.string,
+      reviewCount: PropTypes.number
+    }).isRequired
   }).isRequired
 };
 

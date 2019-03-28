@@ -3,10 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const ReviewsBin = ({ inventory, productToggle, modalStatus }) => {
-  const { reviewCount } = inventory[productToggle].filter(
-    obj => obj.productName === modalStatus.focusProduct
-  )[0];
+const ReviewsBin = ({ modalStatus }) => {
+  const { reviewCount } = modalStatus.focusProduct;
   return (
     <div style={{ display: "flex" }}>
       <div className="heading__reviews">
@@ -27,32 +25,22 @@ const ReviewsBin = ({ inventory, productToggle, modalStatus }) => {
 };
 
 ReviewsBin.propTypes = {
-  inventory: PropTypes.objectOf(
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        productName: PropTypes.string,
-        price: PropTypes.string,
-        url: PropTypes.string,
-        alt: PropTypes.string
-      })
-    )
-  ).isRequired,
-  productToggle: PropTypes.string.isRequired,
   modalStatus: PropTypes.shape({
     active: PropTypes.bool,
-    focusProduct: PropTypes.string
+    focusProduct: PropTypes.shape({
+      productName: PropTypes.string,
+      url: PropTypes.string,
+      alt: PropTypes.string,
+      price: PropTypes.string,
+      reviewCount: PropTypes.number
+    }).isRequired
   }).isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    inventory: state.inventory,
-    modalStatus: state.modalStatus,
-    productToggle: state.productToggle
+    modalStatus: state.modalStatus
   };
 };
 
-export default connect(
-  mapStateToProps,
-  null
-)(ReviewsBin);
+export default connect(mapStateToProps)(ReviewsBin);

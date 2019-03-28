@@ -9,10 +9,8 @@ import Form from "./ProductDetailsParts/Form";
 import "../styles/ProductDetails.css";
 
 // eslint-disable-next-line no-shadow
-const ProductDetails = ({ inventory, modalStatus, productToggle }) => {
-  const { productName, price } = inventory[productToggle].filter(
-    obj => obj.productName === modalStatus.focusProduct
-  )[0];
+const ProductDetails = ({ modalStatus }) => {
+  const { productName, price } = modalStatus.focusProduct;
   return (
     <div className="modal">
       <div className="modal__modal-main">
@@ -44,20 +42,15 @@ const ProductDetails = ({ inventory, modalStatus, productToggle }) => {
 };
 
 ProductDetails.propTypes = {
-  inventory: PropTypes.objectOf(
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        productName: PropTypes.string,
-        price: PropTypes.string,
-        url: PropTypes.string,
-        alt: PropTypes.string
-      })
-    )
-  ).isRequired,
-  productToggle: PropTypes.string.isRequired,
   modalStatus: PropTypes.shape({
     active: PropTypes.bool,
-    focusProduct: PropTypes.string
+    focusProduct: PropTypes.shape({
+      productName: PropTypes.string,
+      url: PropTypes.string,
+      alt: PropTypes.string,
+      price: PropTypes.string,
+      reviewCount: PropTypes.number
+    }).isRequired
   }).isRequired
 };
 

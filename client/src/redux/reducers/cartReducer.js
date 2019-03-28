@@ -1,4 +1,4 @@
-import { CART_STATUS } from "../actionTypes";
+import { CART_STATUS, ADD_TO_CART } from "../actionTypes";
 
 const toggleCartStatus = (state = "closed", action) => {
   switch (action.type) {
@@ -10,8 +10,22 @@ const toggleCartStatus = (state = "closed", action) => {
   }
 };
 
-export const addToCart = (state = [], action) => {
-  return state;
-}
+export const cartInventory = (state = [], action) => {
+  switch (action.type) {
+    case ADD_TO_CART: {
+      const { size, quantity, focusProduct } = action.payload.order;
+      return [
+        ...state,
+        {
+          focusProduct,
+          size,
+          quantity
+        }
+      ];
+    }
+    default:
+      return state;
+  }
+};
 
 export default toggleCartStatus;

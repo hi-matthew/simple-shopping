@@ -30,7 +30,7 @@ export const toggleModal = focusProduct => {
   return {
     type: types.MODAL_STATUS,
     payload: {
-      focusProduct
+      focusProduct: focusProduct || {}
     }
   };
 };
@@ -45,11 +45,18 @@ export const updateQuantity = e => {
   };
 };
 
-export const addToCart = newItem => {
+export const addToCart = (e, focusProduct) => {
+  e.preventDefault();
+  const form = e.target;
+  const { value: sizeValue } = form[0].selectedOptions[0];
   return {
-    type: types.CART,
+    type: types.ADD_TO_CART,
     payload: {
-      newItem
+      order: {
+        focusProduct,
+        size: sizeValue,
+        quantity: form.quantity.value
+      }
     }
   };
 };

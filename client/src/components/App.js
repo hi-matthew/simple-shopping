@@ -33,7 +33,13 @@ App.propTypes = {
   loadInventory: PropTypes.func.isRequired,
   modalStatus: PropTypes.shape({
     isActive: PropTypes.bool,
-    focusProduct: PropTypes.string
+    focusProduct: PropTypes.shape({
+      productName: PropTypes.string,
+      url: PropTypes.string,
+      alt: PropTypes.string,
+      price: PropTypes.string,
+      reviewCount: PropTypes.number
+    }).isRequired
   }).isRequired
 };
 

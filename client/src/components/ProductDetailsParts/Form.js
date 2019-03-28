@@ -1,18 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { updateQuantity } from "../../redux/actionCreators";
+import { updateQuantity, addToCart } from "../../redux/actionCreators";
 import makeAccessiblePseudoButton from "../../utils";
 
-const Form = ({ quantity, updateQuantity }) => {
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (e.keyCode === "13") return;
-    console.log("form submitted!");
-    // addToCart();
-  };
+const Form = ({ quantity, updateQuantity, addToCart, focusProduct }) => {
   return (
-    <form className="product-details__form" onSubmit={e => handleSubmit(e)}>
+    <form
+      className="product-details__form"
+      onSubmit={e => addToCart(e, focusProduct)}
+    >
       <div className="form__size-select">
         <span>*Size</span>
         <select id="size" name="size" type="select">
@@ -26,6 +23,7 @@ const Form = ({ quantity, updateQuantity }) => {
       </div>
       <div className="form__submit-container">
         <div className="submit-container__button-container">
+          {/* eslint-disable */}
           <span
             className="button-container__decrementer"
             onClick={updateQuantity}
@@ -36,7 +34,8 @@ const Form = ({ quantity, updateQuantity }) => {
           <input
             type="text"
             className="button-container__value"
-            value={quantity}
+            name="quantity"
+            value={Number(quantity)}
             readOnly
             onKeyPress={e => e.preventDefault()}
           />
@@ -47,6 +46,7 @@ const Form = ({ quantity, updateQuantity }) => {
           >
             +
           </span>
+          {/* eslint-enable */}
         </div>
         <input type="submit" id="submit" value="Add to cart" />
       </div>
@@ -56,18 +56,29 @@ const Form = ({ quantity, updateQuantity }) => {
 
 Form.propTypes = {
   quantity: PropTypes.number.isRequired,
-  updateQuantity: PropTypes.func.isRequired
+  updateQuantity: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
+  focusProduct: PropTypes.shape({
+    productName: PropTypes.string,
+    url: PropTypes.string,
+    alt: PropTypes.string,
+    price: PropTypes.string,
+    reviewCount: PropTypes.number
+  }).isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    quantity: state.quantity
+    quantity: state.quantity,
+    focusProduct: state.modalStatus.focusProduct,
+    cartInventory: state.cartInventory
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateQuantity: e => dispatch(updateQuantity(e))
+    updateQuantity: e => dispatch(updateQuantity(e)),
+    addToCart: (e, focusProduct) => dispatch(addToCart(e, focusProduct))
   };
 };
 
