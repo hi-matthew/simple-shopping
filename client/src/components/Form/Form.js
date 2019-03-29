@@ -2,9 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { updateQuantity, addToCart } from "../../redux/actionCreators";
+import ShirtSizeOptions from "./ShirtSizeOptions";
+import ShoeSizeOptions from "./ShoeSizeOptions";
 import makeAccessiblePseudoButton from "../../utils";
 
-const Form = ({ quantity, updateQuantity, addToCart, focusProduct }) => {
+const Form = ({
+  quantity,
+  updateQuantity,
+  addToCart,
+  focusProduct,
+  productToggle
+}) => {
   return (
     <form
       className="product-details__form"
@@ -13,12 +21,11 @@ const Form = ({ quantity, updateQuantity, addToCart, focusProduct }) => {
       <div className="form__size-select">
         <span>*Size</span>
         <select id="size" name="size" type="select">
-          <option value="x-small">X-Small</option>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-          <option value="x-large">X-Large</option>
-          <option value="xx-large">XX-Large</option>
+          {productToggle === "shirts" ? (
+            <ShirtSizeOptions />
+          ) : (
+            <ShoeSizeOptions />
+          )}
         </select>
       </div>
       <div className="form__submit-container">
@@ -35,7 +42,7 @@ const Form = ({ quantity, updateQuantity, addToCart, focusProduct }) => {
             type="text"
             className="button-container__value"
             name="quantity"
-            value={Number(quantity)}
+            value={quantity}
             readOnly
             onKeyPress={e => e.preventDefault()}
           />
@@ -64,14 +71,16 @@ Form.propTypes = {
     alt: PropTypes.string,
     price: PropTypes.string,
     reviewCount: PropTypes.number
-  }).isRequired
+  }).isRequired,
+  productToggle: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => {
   return {
     quantity: state.quantity,
     focusProduct: state.modalStatus.focusProduct,
-    cartInventory: state.cartInventory
+    cartInventory: state.cartInventory,
+    productToggle: state.productToggle
   };
 };
 

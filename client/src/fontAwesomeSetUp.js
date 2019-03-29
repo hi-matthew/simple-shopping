@@ -4,7 +4,8 @@ import {
   faShoppingCart,
   faHeart,
   faTimes,
-  faStar
+  faStar,
+  faCheckCircle
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
@@ -14,3 +15,4 @@ library.add(faHeart);
 library.add(faGithub);
 library.add(faTimes);
 library.add(faStar);
+library.add(faCheckCircle);

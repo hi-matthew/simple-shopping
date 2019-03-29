@@ -49,14 +49,16 @@ export const addToCart = (e, focusProduct) => {
   e.preventDefault();
   const form = e.target;
   const { value: sizeValue } = form[0].selectedOptions[0];
+  const order = {
+    focusProduct,
+    size: Number(sizeValue) || sizeValue,
+    quantity: Number(form.quantity.value)
+  };
+
   return {
     type: types.ADD_TO_CART,
     payload: {
-      order: {
-        focusProduct,
-        size: sizeValue,
-        quantity: form.quantity.value
-      }
+      order
     }
   };
 };
