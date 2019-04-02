@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Heading from "./ProductDetailsParts/Heading";
-import CartConfirmation from "./CartConfirmation";
-import ProductDetailsBody from "./ProductDetailsParts/ProductDetailsBody";
-import "../styles/ProductDetails.css";
+import Heading from "./Heading";
+import CartConfirmation from "../CartConfirmation";
+import Body from "./Body";
+import "../../styles/ProductDetails.css";
 
 // eslint-disable-next-line no-shadow
 const ProductDetails = ({ confirmAddToCart }) => {
@@ -13,11 +13,7 @@ const ProductDetails = ({ confirmAddToCart }) => {
       <div className="modal__modal-main">
         <Heading />
         <div className="modal-main__modal-body">
-          {confirmAddToCart.isActive ? (
-            <CartConfirmation />
-          ) : (
-            <ProductDetailsBody />
-          )}
+          {confirmAddToCart.isActive ? <CartConfirmation /> : <Body />}
         </div>
       </div>
     </div>

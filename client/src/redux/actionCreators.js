@@ -62,3 +62,9 @@ export const addToCart = (e, focusProduct) => {
     }
   };
 };
+
+export const toggleProfile = () => {
+  return {
+    type: types.TOGGLE_PROFILE
+  };
+};

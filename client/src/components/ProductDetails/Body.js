@@ -6,7 +6,7 @@ import ReviewsBin from "./ReviewsBin";
 import Description from "./Description";
 import Form from "../Form/Form";
 
-const ProductDetailsBody = ({ modalStatus }) => {
+const Body = ({ modalStatus }) => {
   const { productName, price } = modalStatus.focusProduct;
   return (
     <>
@@ -27,7 +27,7 @@ const ProductDetailsBody = ({ modalStatus }) => {
   );
 };
 
-ProductDetailsBody.propTypes = {
+Body.propTypes = {
   modalStatus: PropTypes.shape({
     active: PropTypes.bool,
     focusProduct: PropTypes.shape({
@@ -46,4 +46,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ProductDetailsBody);
+export default connect(mapStateToProps)(Body);

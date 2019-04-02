@@ -3,16 +3,22 @@ import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { toggleCartStatus } from "../redux/actionCreators";
+import { toggleCartStatus, toggleProfile } from "../redux/actionCreators";
 import makeAccessiblePsuedoButton from "../utils";
+import Profile from "./Profile";
 import Cart from "./Cart";
 import "../styles/Navigation.css";
 
 const Navigation = props => {
-  const { toggleCartStatus } = props;
+  const { toggleCartStatus, toggleProfile } = props;
   return (
     <nav className="navigation">
-      <span className="navigation__profile-container">
+      <Profile />
+      <span
+        className="navigation__profile-container"
+        onClick={toggleProfile}
+        {...makeAccessiblePsuedoButton(toggleProfile)}
+      >
         <FontAwesomeIcon
           className="navigation__icon navigation__icon--profile"
           icon="user"
@@ -39,12 +45,14 @@ const Navigation = props => {
 };
 
 Navigation.propTypes = {
-  toggleCartStatus: PropTypes.func.isRequired
+  toggleCartStatus: PropTypes.func.isRequired,
+  toggleProfile: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleCartStatus: () => dispatch(toggleCartStatus())
+    toggleCartStatus: () => dispatch(toggleCartStatus()),
+    toggleProfile: () => dispatch(toggleProfile())
   };
 };
 
