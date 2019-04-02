@@ -11,18 +11,12 @@ const ProductDetailsBody = ({ modalStatus }) => {
   return (
     <>
       <ProductImage />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          marginLeft: "25px"
-        }}
-      >
+      <div className="modal-body__detail-container">
         <div className="modal-body__product-details">
           <div className="product-details__heading">
             <h2>{productName}</h2>
             <ReviewsBin />
-            <h3 className="heading__price">{price}</h3>
+            <h3 className="heading__price">{`$${price}`}</h3>
           </div>
           <hr className="line line--modal" style={{ margin: "20px 0" }} />
           <Description />

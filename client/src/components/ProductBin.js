@@ -7,7 +7,7 @@ import "../styles/ProductBin.css";
 const ProductBin = props => {
   const { productToggle, inventory } = props;
   const renderProductBin = () => {
-    return inventory[productToggle].map((product, i) => (
+    return inventory[productToggle].map(product => (
       <ProductCard
         key={product.productName}
         className="product-bin__product-card"

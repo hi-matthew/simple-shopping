@@ -14,6 +14,19 @@ export const cartInventory = (state = [], action) => {
   switch (action.type) {
     case ADD_TO_CART: {
       const { size, quantity, focusProduct } = action.payload.order;
+      const duplicateOrder = state.filter(
+        cartItem =>
+          cartItem.focusProduct.productName === focusProduct.productName &&
+          cartItem.size === size
+      );
+
+      if (duplicateOrder.length) {
+        const index = state.indexOf(duplicateOrder[0]);
+        const stateClone = [...state];
+        stateClone[index].quantity += quantity;
+        return stateClone;
+      }
+
       return [
         ...state,
         {
@@ -55,6 +68,17 @@ export const confirmMessage = (state = initialState, action) => {
     }
     case MODAL_STATUS: {
       return initialState;
+    }
+    default:
+      return state;
+  }
+};
+
+export const calculateSubtotal = (state = 0, action) => {
+  switch (action.type) {
+    case ADD_TO_CART: {
+      const { focusProduct, quantity } = action.payload.order;
+      return state + focusProduct.price * quantity;
     }
     default:
       return state;

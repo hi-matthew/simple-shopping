@@ -34,7 +34,7 @@ const ProductCard = props => {
           </div>
         </div>
         <h3>{productName}</h3>
-        <h4>{price}</h4>
+        <h4>{`$${price}`}</h4>
         <div className="product-card__details-button">
           <span>Details</span>
         </div>
