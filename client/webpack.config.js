@@ -1,13 +1,14 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const BrotliPlugin = require("brotli-webpack-plugin");
 
 module.exports = {
   devtool: "source-map",
   entry: "./src/index.js",
   output: {
     path: path.join(__dirname, "/dist"),
-    filename: "bundle.js"
+    filename: "[name].bundle.js"
   },
   devServer: {
     contentBase: "./dist",
@@ -41,6 +42,23 @@ module.exports = {
       favicon: "./public/favicon.ico",
       inject: true
     }),
-    new CopyPlugin([{ from: "./assets", to: "./assets/" }])
-  ]
+    new CopyPlugin([{ from: "./assets", to: "./assets/" }]),
+    new BrotliPlugin({
+      asset: "[path].br[query]",
+      test: /\.(js|css|html|svg)$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
+  ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all"
+        }
+      }
+    }
+  }
 };
