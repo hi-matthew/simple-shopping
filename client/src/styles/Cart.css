@@ -97,12 +97,14 @@
   margin: 0 10px 0 25px;
   justify-content: space-evenly;
   height: 100%;
+  color: rgba(205, 205, 205);
 }
 
 .cart-items__single h4 {
   margin: 0;
   flex: 0.7;
   text-align: center;
+  color: rgba(205, 205, 205);
 }
 
 .cart__cart-summary {
