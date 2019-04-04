@@ -5,3 +5,4 @@ export const MODAL_STATUS = "MODAL_STATUS";
 export const QUANTITY = "QUANTITY";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const TOGGLE_PROFILE = "TOGGLE_PROFILE";
+export const REMOVE_ITEM = "REMOVE_ITEM";

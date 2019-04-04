@@ -1,8 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { connect } from "react-redux";
+import { removeItem } from "../redux/actionCreators";
+import makeAccessiblePseudoButton from "../utils";
 
-const CartItem = ({ quantity, size, focusProduct }) => (
+const CartItem = ({ quantity, size, focusProduct, removeItem }) => (
   <div className="cart-items__single">
+    <FontAwesomeIcon
+      icon="times"
+      onClick={e => removeItem({ e, size, focusProduct })}
+      className="cart-items__close-window"
+      {...makeAccessiblePseudoButton(e =>
+        removeItem({ e, size, focusProduct })
+      )}
+    />
     <div className="single__img-container">
       <img src={focusProduct.url} alt={focusProduct.alt} />
     </div>
@@ -28,7 +40,18 @@ CartItem.propTypes = {
     productName: PropTypes.string,
     reviewCount: PropTypes.number,
     url: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  removeItem: PropTypes.func.isRequired
 };
 
-export default CartItem;
+const mapDispatchToProps = dispatch => {
+  return {
+    removeItem: ({ e, size, focusProduct }) =>
+      dispatch(removeItem({ e, size, focusProduct }))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CartItem);

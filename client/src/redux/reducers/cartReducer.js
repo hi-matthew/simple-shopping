@@ -1,4 +1,9 @@
-import { CART_STATUS, ADD_TO_CART, MODAL_STATUS } from "../actionTypes";
+import {
+  CART_STATUS,
+  ADD_TO_CART,
+  MODAL_STATUS,
+  REMOVE_ITEM
+} from "../actionTypes";
 
 const toggleCartStatus = (state = "closed", action) => {
   switch (action.type) {
@@ -35,6 +40,19 @@ export const cartInventory = (state = [], action) => {
           quantity
         }
       ];
+    }
+    case REMOVE_ITEM: {
+      const { size, productName } = action.payload;
+      const itemToRemove = state.filter(
+        item =>
+          item.focusProduct.productName === productName && item.size === size
+      )[0];
+      const indexToRemove = state.indexOf(itemToRemove);
+      return indexToRemove === 0
+        ? state.slice(1)
+        : indexToRemove === state.length - 1
+        ? state.slice(0, state.length - 1)
+        : state.slice(0, indexToRemove).concat(state.slice(indexToRemove + 1));
     }
     default:
       return state;

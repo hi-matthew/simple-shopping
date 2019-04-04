@@ -68,3 +68,15 @@ export const toggleProfile = () => {
     type: types.TOGGLE_PROFILE
   };
 };
+
+export const removeItem = obj => {
+  console.log(obj);
+  const { e, size, focusProduct } = obj;
+  return {
+    type: types.REMOVE_ITEM,
+    payload: {
+      productName: focusProduct.productName,
+      size
+    }
+  };
+};
