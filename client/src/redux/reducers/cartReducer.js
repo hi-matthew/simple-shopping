@@ -98,6 +98,10 @@ export const calculateSubtotal = (state = 0, action) => {
       const { focusProduct, quantity } = action.payload.order;
       return state + focusProduct.price * quantity;
     }
+    case REMOVE_ITEM: {
+      const { price, quantity } = action.payload;
+      return state - price * quantity;
+    }
     default:
       return state;
   }

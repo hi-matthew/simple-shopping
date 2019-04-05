@@ -9,10 +9,10 @@ const CartItem = ({ quantity, size, focusProduct, removeItem }) => (
   <div className="cart-items__single">
     <FontAwesomeIcon
       icon="times"
-      onClick={e => removeItem({ e, size, focusProduct })}
+      onClick={() => removeItem({ quantity, size, focusProduct })}
       className="cart-items__close-window"
-      {...makeAccessiblePseudoButton(e =>
-        removeItem({ e, size, focusProduct })
+      {...makeAccessiblePseudoButton(() =>
+        removeItem({ quantity, size, focusProduct })
       )}
     />
     <div className="single__img-container">
@@ -46,8 +46,8 @@ CartItem.propTypes = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeItem: ({ e, size, focusProduct }) =>
-      dispatch(removeItem({ e, size, focusProduct }))
+    removeItem: ({ quantity, size, focusProduct }) =>
+      dispatch(removeItem({ quantity, size, focusProduct }))
   };
 };
 

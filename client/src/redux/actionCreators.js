@@ -70,13 +70,14 @@ export const toggleProfile = () => {
 };
 
 export const removeItem = obj => {
-  console.log(obj);
-  const { e, size, focusProduct } = obj;
+  const { quantity, size, focusProduct } = obj;
   return {
     type: types.REMOVE_ITEM,
     payload: {
+      price: focusProduct.price,
       productName: focusProduct.productName,
-      size
+      size,
+      quantity
     }
   };
 };
